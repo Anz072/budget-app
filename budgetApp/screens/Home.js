@@ -1,10 +1,18 @@
-import { View, Text, StyleSheet, FlatList, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  ScrollView,
+  Pressable,
+} from "react-native";
 import ProgressChart from "../assets/Components/LineChart";
 import { mockEntries } from "../mockData";
 import FlatListItem from "../assets/Components/FlatListItem";
 import { LinearGradient } from "expo-linear-gradient";
+import NewRecordButton from "../assets/Components/NewRecordButton";
 
-function Home() {
+function Home({navigation}) {
   const renderItem = (item, index) => {
     return (
       <>
@@ -21,50 +29,54 @@ function Home() {
       </>
     );
   };
+
   return (
-    <ScrollView>
-      <View style={styles.root}>
-        <LinearGradient colors={["#2E0854", "#431077"]} style={styles.banner} >
-          <Text style={styles.bannerText}>
-            $678.<Text style={styles.bannerTextMini}>00</Text>
-          </Text>
-        </LinearGradient>
-        <View style={styles.placer}>
-          <View style={styles.card}>
-            <View style={styles.cardLine1}>
-              <Text>0</Text>
-              <View style={styles.cardLineInner}>
-                <Text>Month Budget</Text>
-                <Text>1260</Text>
+    <>
+      <NewRecordButton/>
+      <ScrollView>
+        <View style={styles.root}>
+          <LinearGradient colors={["#2E0854", "#431077"]} style={styles.banner}>
+            <Text style={styles.bannerText}>
+              $678.<Text style={styles.bannerTextMini}>00</Text>
+            </Text>
+          </LinearGradient>
+          <View style={styles.placer}>
+            <View style={styles.card}>
+              <View style={styles.cardLine1}>
+                <Text>0</Text>
+                <View style={styles.cardLineInner}>
+                  <Text>Month Budget</Text>
+                  <Text>1260</Text>
+                </View>
+              </View>
+              <View style={styles.cardLine2}>
+                <ProgressChart
+                  backgroundColor={"#2E0854"}
+                  current={220}
+                  total={454}
+                />
               </View>
             </View>
-            <View style={styles.cardLine2}>
-              <ProgressChart
-                backgroundColor={"#2E0854"}
-                current={220}
-                total={454}
-              />
+            <View style={styles.card2}>
+              <Text style={styles.card2Text}>Last Expenses</Text>
+              <View style={styles.customUnderline} />
+              <ScrollView>
+                {mockEntries
+                  .slice(-5)
+                  .map((item, index) => renderItem(item, index))}
+              </ScrollView>
+              <View style={styles.textMoreInfo}>
+                <Text>More→</Text>
+              </View>
             </View>
-          </View>
-          <View style={styles.card2}>
-            <Text style={styles.card2Text}>Last Expenses</Text>
-            <View style={styles.customUnderline} />
-            <ScrollView>
-              {mockEntries
-                .slice(-5)
-                .map((item, index) => renderItem(item, index))}
-            </ScrollView>
-            <View style={styles.textMoreInfo}>
-              <Text>More→</Text>
+            <View style={styles.card2}>
+              <Text style={styles.card2Text}>Placeholder</Text>
+              <View style={styles.customUnderline} />
             </View>
-          </View>
-          <View style={styles.card2}>
-            <Text style={styles.card2Text}>Placeholder</Text>
-            <View style={styles.customUnderline} />
           </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 }
 

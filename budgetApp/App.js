@@ -4,7 +4,6 @@ import AppNavigator from "./AppNavigator";
 import * as Font from "expo-font";
 import { StatusBar } from "expo-status-bar";
 
-
 const loadFonts = async () => {
   await Font.loadAsync({
     "Inter-Regular": require("./assets/fonts/Inter-Regular.ttf"),
