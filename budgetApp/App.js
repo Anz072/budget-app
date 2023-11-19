@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import AppNavigator from "./AppNavigator";
 import * as Font from "expo-font";
 import { StatusBar } from "expo-status-bar";
+import { MyProvider } from "./Context";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -19,12 +20,12 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <MyProvider>
       <StatusBar style="light" />
       <NavigationContainer>
         <AppNavigator />
       </NavigationContainer>
-    </>
+    </MyProvider>
   );
 };
 

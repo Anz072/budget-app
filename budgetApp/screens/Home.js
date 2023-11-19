@@ -33,7 +33,7 @@ function Home({navigation}) {
   return (
     <>
       <NewRecordButton/>
-      <ScrollView>
+      <ScrollView> 
         <View style={styles.root}>
           <LinearGradient colors={["#2E0854", "#431077"]} style={styles.banner}>
             <Text style={styles.bannerText}>

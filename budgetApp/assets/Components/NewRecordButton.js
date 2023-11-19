@@ -1,11 +1,16 @@
 import { StyleSheet, View, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useNumberContext } from "../../Context";
 
 const NewRecordButton = () => {
+  const { resetNumber } = useNumberContext();
+
+
   const navigation = useNavigation();
 
   const newRecordHandler = () => {
+    resetNumber();
     navigation.navigate("AddRecordScreen");
   };
 
