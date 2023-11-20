@@ -1,12 +1,21 @@
 import { View, Pressable, StyleSheet, Text } from "react-native";
 import { useNumberContext } from "../../Context";
+import { useNavigation } from "@react-navigation/native";
 
 const NumberButton = ({ value }) => {
   const { updateNumber, removeLastNumber } = useNumberContext();
 
+  const navigation = useNavigation();
+
+  const newRecordHandler = () => {
+    navigation.navigate("AddRecordScreen");
+  };
+
   const updateNumberHandler = (btnVal) => {
     if (btnVal == "DEL") {
       removeLastNumber();
+    }else if(btnVal == "OK"){
+        navigation.navigate("CategoryScreen");
     } else {
       updateNumber(btnVal);
     }

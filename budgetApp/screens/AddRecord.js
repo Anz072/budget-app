@@ -2,20 +2,27 @@ import { useState, useEffect } from "react";
 import { View, StyleSheet, Text, Pressable } from "react-native";
 import NumberButton from "../assets/Components/NumberButton";
 import { useNumberContext } from "../Context";
+import SwitchButton from "../assets/Components/SwitchButton";
 
 const AddRecordScreen = () => {
   const { trackableValue, resetNumber } = useNumberContext();
-  
 
   return (
     <View style={styles.root}>
       <View style={styles.generalDisplay}>
         <View style={styles.generalDisplayValue}>
-          <Text style={styles.trackableValue}>{trackableValue} Eur</Text>
+          <Text style={styles.trackableValueBanner}>Spent</Text>
+          <Text
+            style={styles.trackableValue}
+            adjustsFontSizeToFit={true}
+            numberOfLines={1}
+          >
+            {trackableValue} <Text style={styles.trackableValue2}>Eur</Text>
+          </Text>
         </View>
         <View style={styles.generalDisplaySwitch}>
-          <Text style={styles.switchButton}>INCOME</Text>
-          <Text style={styles.switchButton}>EXPENSE</Text>
+          <SwitchButton name="INCOME" />
+          <SwitchButton name="EXPENSE" />
         </View>
       </View>
 
@@ -56,14 +63,15 @@ const styles = StyleSheet.create({
   },
   generalDisplay: {
     height: "55%",
-    backgroundColor: "#35ec94",
+    backgroundColor: "#5fcf99",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "end",
   },
   generalDisplayValue: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "flex-end",
+    marginHorizontal: 20,
   },
   generalDisplaySwitch: {
     flexDirection: "row",
@@ -77,15 +85,25 @@ const styles = StyleSheet.create({
   },
   menuNumbers: {
     flex: 1,
-    backgroundColor: "#ccc",
   },
   menuNumbersRow: {
-    backgroundColor: "#ccc",
+    backgroundColor: "#fafafa",
     flexDirection: "row",
     flex: 1,
   },
   trackableValue: {
     fontSize: 72,
+    color: "#FFF",
+    textAlign: "right",
+  },
+  trackableValue2: {
+    fontSize: 48,
+    color: "#FFF",
+    textAlign: "right",
+  },
+  trackableValueBanner: {
+    fontSize: 32,
+    textAlign: "right",
     color: "#FFF",
   },
 });

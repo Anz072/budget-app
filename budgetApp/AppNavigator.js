@@ -7,6 +7,9 @@ import Home from "./screens/Home";
 import { Ionicons } from "@expo/vector-icons";
 import AddRecordScreen from "./screens/AddRecord";
 import SlideFromBottom from "./assets/Components/SlidFromBottom";
+import CategoryScreen from "./screens/CategoryScreen";
+
+
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +55,7 @@ const AppNavigator = () => {
     >
       <Drawer.Screen name="Home" component={HomeStack} />
       <Drawer.Screen name="AddRecordScreen" component={AddRecordScreen} />
+      <Drawer.Screen name="CategoryScreen" component={CategoryScreen} />
     </Drawer.Navigator>
   );
 };
